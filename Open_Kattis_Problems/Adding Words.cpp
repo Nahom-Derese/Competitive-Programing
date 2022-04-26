@@ -1,4 +1,6 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <regex>
+#include <utility>
 
 int main() {
     // Write C++ code here
@@ -32,6 +34,7 @@ int main() {
                 else{
                     flag = true;
                     std::cout << v << " unknown" << '\n';
+                    break;
                 }
             }
             for (std::sregex_iterator i = opp_begin; i != opp_end; i++)
