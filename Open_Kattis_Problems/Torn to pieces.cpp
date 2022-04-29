@@ -37,18 +37,21 @@ void split(string s, string del, map<string, unordered_set<string>> &u){
     u[first] = r;
 }
 
-void dfs(map<string,unordered_set<string>> &Adj, string start, string end){
-    stack<string> q;
+void dfs(map<string,unordered_set<string>> Adj, string start, string end){
+    stack<string> q,branches;
     q.push(start);
     vector<string> ans;
     while(!q.empty()){
         string temp = q.top();
         q.pop();
         ans.push_back(temp);
-        stack<string> branches;
-        if(Adj[temp].size() > 1) for(int w=0;w<Adj[temp].size();w++) branches.push(temp);
+        unordered_set<string> j=Adj[temp] ,c = Adj[temp];
+        for (auto y:j) 
+        for(int v=0;v<ans.size();v++) 
+        if (y==ans[v]) c.erase(ans[v]);
+        if(c.size() > 1) for(int w=0;w<c.size();w++) branches.push(temp);
         Node* itr= head;
-        if (head == NULL) {
+        if(head == NULL) {
             Node* tem = new Node();
             tem->name = temp;
             head = tem;
@@ -62,21 +65,21 @@ void dfs(map<string,unordered_set<string>> &Adj, string start, string end){
              tail = newwe;
         }
         
-        if (temp==end) break;
-        
-        for(auto e: Adj[temp]) {
+        if(temp==end) break;
+        int counter=0;
+        for(string e: Adj[temp]) {
+            counter++;
             bool ch = false;
-            for (auto k:ans) if (k==e) ch = true;
-            if (!ch) q.push(e);
-            else {
-                // if (branches.empty()) head = NULL;
-                // else{
-                Node* itrr;
+            for(string k:ans) if (k==e) ch = true;
+            if(!ch) q.push(e);
+            else if(branches.size()>0 && counter == Adj[temp].size())
+            {
+                Node* itrr=head;
                 while (itrr->name != branches.top()) itrr = itrr->next;
                 itrr->next = NULL;
                 tail = itrr;
-                // }
             }
+            else if(q.empty() || e == q.top()) head = NULL;
         }
 }
 }
@@ -95,12 +98,16 @@ int main(){
         split(G," ",Adj_List);
     }
     cin >> start >> end;
+
     dfs(Adj_List,start, end);
-    Node* itr = head;
-    while (itr!=NULL)
-    {
-        cout << itr->name << " ";
-        itr = itr->next;
+    if (head==NULL) cout << "no route found" << endl;
+    else{
+        Node* itr = head;
+        while (itr!=NULL)
+        {
+            cout << itr->name << " ";
+            itr = itr->next;
+        }
+        cout << endl;
     }
-    cout << endl;
 }
