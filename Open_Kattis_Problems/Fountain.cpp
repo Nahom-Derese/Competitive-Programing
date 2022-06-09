@@ -3,6 +3,8 @@
 #include<utility>
 #include<vector>
 #include<queue>
+
+
 using namespace std;
 
 pair<int,int> maxi;
@@ -37,8 +39,7 @@ void bfs(vector<vector<char>> &graph, pair<int,int> start){
         pair<int,int> temp = q.front();
         q.pop();
         graph[temp.first][temp.second] = 'V';
-        if(temp.first != maxi.first-1) 
-            if(graph[temp.first+1][temp.second] != '#') q.push({temp.first+1,temp.second});
+        if(temp.first != maxi.first-1) if(graph[temp.first+1][temp.second] != '#') q.push({temp.first+1,temp.second});
         else{ 
             if(temp.second != maxi.second-1 && graph[temp.first][temp.second+1] != '#' && graph[temp.first][temp.second+1] != 'V') 
                 q.push({temp.first,temp.second+1});
