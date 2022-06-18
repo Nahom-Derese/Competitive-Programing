@@ -1,4 +1,4 @@
-from cmath import log, log10
+from cmath import log10
 from math import trunc
 
 a = int(input())
