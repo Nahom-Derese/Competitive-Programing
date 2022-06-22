@@ -11,6 +11,7 @@ public class Greater {
         } else {
             System.out.println(0);
         }
+        n.close();
     }
-    
+
 }
