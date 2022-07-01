@@ -6,10 +6,11 @@ def dfs(adjList, s, e):
     while stack:
         temp = stack.pop()
         if(temp[:11] == "TraceBack :"):
-            output = output[:output.index(temp[12:])]
+            if len(output) > 1:
+                output = output[:len(output) - 1 - output[::-1].index(temp[12:])]
             continue
         output.append(temp)
-        if(temp == "A"):
+        if(temp == e):
             return output
         for i in adjList[temp]:
             if len(adjList[temp]) > 1:
@@ -21,6 +22,7 @@ def dfs(adjList, s, e):
                 stack.append(i)
                 passed[i] = True
     return []
+
 a = int(input())
 adjList = {}
 
@@ -36,6 +38,11 @@ for i in range(a):
 
 s,e = input().split()
 
+answer = dfs(adjList, s, e)
 
+if not answer:
+    print("no route found", end="")
 
-print(dfs(adjList, s, e))
+for i in answer:
+    print(i , end=" ")
+print()
