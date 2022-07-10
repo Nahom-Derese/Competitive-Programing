@@ -5,8 +5,9 @@ public class Weighted_Graph extends Graph {
         weighted = true;
     }
     public void connect(String a, String b, int c) {
-        nodes.put(a, false);
-        nodes.put(b, false);
+        int[] f = {0,Integer.MAX_VALUE};
+        nodes.put(a, f);
+        nodes.put(b, f);
         ArrayList<String> e = new ArrayList<>();
         e.add(b);
         e.add(String.valueOf(c));

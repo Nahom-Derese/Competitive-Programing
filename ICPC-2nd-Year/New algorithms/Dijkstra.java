@@ -16,7 +16,7 @@ public class Dijkstra {
         B.connect("f", "h", 2);
 
         B.print_dfs("a", "h");
-        
+        System.out.println("Cost ==> " + B.dijkstra("a", "c"));
     }
     
     
