@@ -2,24 +2,37 @@ n, m = [int(i) for i in input().split()]
 
 pages = [int(i) for i in input().split()]
 
-dict = {}
+dict = {i:[] for i in range(n)}
 set = {}
+arr = [-1 for i in range(n)]
 
 for i in range(m):
     a, b = [int(i) for i in input().split()]
-    dict[b-1] = a-1
-    if (a-1 in set.keys()):
-        set[a-1].append(b-1)
-    else:
-        set[a-1] = [b-1]
+    arr[b-1] = a-1
+    set[a-1] = []
+
+for i in range(n):
+    x = arr[i]
+    while x != -1:
+        dict[i].append(x)
+        x = arr[x]
+
+for i in set.keys():
+    for j in range(m):
+        if (i in dict[j]):
+            set[i].append(j)
+    
+
+
 
 Culminating = [a for a in range(n) if a not in set.keys()]
 
 for i in range(1,len(pages)):
-    if (i in dict.keys()):
-        pages[i] += pages[dict[i]]
+    if (i in dict.keys() and len(dict[i]) > 0):
+        pages[i] += pages[dict[i][0]]
     
-possibleAns = float('inf')
+sorted = sorted([pages[i] for i in dict.keys() if i in Culminating])
+possibleAns = sorted[0] + sorted[1]
 
 for i in set.keys():
     if (len(set[i]) > 1):
@@ -27,10 +40,5 @@ for i in set.keys():
         page.sort()
         if (len(page) > 1 and possibleAns > page[0] + page[1] - pages[i]):
             possibleAns = (page[0] + page[1] - pages[i]) 
-
-if (possibleAns == float('inf')):
-    y = [pages[i] for i in Culminating]
-    y.sort()
-    possibleAns = y[0] + y[1]
 
 print(possibleAns)
