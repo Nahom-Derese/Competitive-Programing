@@ -13,7 +13,6 @@ public class Dijkstra {
         B.connect("d", "g", 3);
         B.connect("g", "h", 1);
         B.connect("d", "h", 4);
-        B.connect("f", "h", 2);
 
         B.print_dfs("a", "h");
         System.out.println("Cost ==> " + B.dijkstra("a", "c"));
