@@ -9,13 +9,19 @@ for i in range(N):
     ans = a[4].lower()
     check = [ord(j) for j in i1 + i2 + ans]
     maximum = max(check)
+    minimum = min(check)
 
     if maximum > 57:
         maximum = maximum-87
     else:
         maximum = maximum-48
 
-    if maximum == 1:
+    if minimum > 57:
+        minimum = minimum-87
+    else:
+        minimum = minimum-48
+
+    if maximum == 1 and minimum == 1:
         maximum-=1
 
     for k in range(maximum+1,37):
