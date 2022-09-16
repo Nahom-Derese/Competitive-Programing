@@ -16,7 +16,8 @@ for j in range(T):
     for i in dict:
         u = [o[p-1] for p in dict[i]]
         answer += int(min(u) * i)
-        dict[i] = [j-min(u) for j in u]
+        for p in dict[i]:
+            o[p-1] -= 1
 
     ans.append(int(answer))
 
