@@ -1,0 +1,6 @@
+*.out
+*.in
+*.class
+*.txt
+.vscode
+README.py
