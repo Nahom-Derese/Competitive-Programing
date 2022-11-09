@@ -3,14 +3,18 @@ class Solution:
         a = dict()
         maxes = []
         maxe = 0
-        for i in range(len(s)):
+        i = 0
+        while i < len(s):
             if not a.get(s[i], False):
-                a[s[i]] = True
+                a[s[i]] = [True,i]
                 maxe += 1
             else:
+                i = a.get(s[i])[1]
                 a = {}
-                maxes.append(maxe)
                 maxe = 0
-        return max(maxes)
+            maxes.append(maxe)
+            i+=1
+        ans = max(maxes) if len(maxes) > 0 else 0
+        return ans
 
-print(Solution.lengthOfLongestSubstring(Solution,'pwwkew'))
+print(Solution.lengthOfLongestSubstring(Solution,"dvdf"))
