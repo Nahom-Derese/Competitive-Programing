@@ -29,4 +29,4 @@ class Solution:
         return ans
         
 
-# print (Solution.letterCombinations(Solution, ""))
+print (Solution.letterCombinations(Solution, "324"))
