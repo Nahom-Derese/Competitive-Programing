@@ -24,4 +24,4 @@ class Solution:
                 
             return l
         
-# print(Solution.permute(Solution,[1,2,3]))
+print(Solution.permute(Solution,[1,2,3]))
