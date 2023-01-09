@@ -1,8 +1,5 @@
 import java.util.Scanner;
 
-/**
- * Autori
- */
 public class Autori {
 
     public static void main(String[] args) {
