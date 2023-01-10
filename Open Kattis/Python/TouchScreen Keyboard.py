@@ -11,6 +11,7 @@ for i in range(int(a)):
     list = []
     for j in range(d):
         e = input()
+        n = 0
         for k in range(len(b)):
             if b[k] == e[k]:
                 continue
@@ -22,9 +23,14 @@ for i in range(int(a)):
                             pair.append([r,w])
                         elif len(pair) == 2:
                             break
-                ans = abs((pair[0][0] - pair[1][0]) + (pair[0][1] - pair[1][1]))
-                list.append("({} {})".format(e[k],ans))
-        answer.append(list)
+                ans = abs((pair[0][0] - pair[1][0])) + abs((pair[0][1] - pair[1][1]))
+                n += ans
+        list.append("{} {}".format(e,n))
+    answer.append(list)
 
-print(answer[0])
+for a in answer:
+    a.sort(key=(lambda x: (int(x.split()[1]), x.split()[0])))
+    for b in a:
+        print(b)
+
         
