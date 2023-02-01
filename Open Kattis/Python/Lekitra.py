@@ -19,7 +19,8 @@ while i in range(3):
         minimumIndex = ASCII.index(ASCIISORTED[0])
     else:
         c+=1
-        i-=1
+        if i != 0:
+            i-=1
         minimumIndex = ASCII.index(ASCIISORTED[c])
     c+=1
     i+=1
