@@ -1,3 +1,5 @@
+import math
+
 a = int(input())
 
 answers = []
@@ -7,22 +9,44 @@ for i in range(a):
     c = 1
 
     milestones = [1]
-
-    while milestones[len(milestones)-1] <= b:
+    mile = []
+    inc = 0
+    while milestones[len(milestones)-1] < b:
         c += 1
-        sumnum = int(((c)/2) * (c+1))
+        d = str(c)
+        k = len(milestones)
+        if (k > 8):
+            inc = milestones[k-9]
+
+        sumnum = int((c*c + c)/2)
+
         milestones.append(sumnum)
 
-    resetNum = milestones.pop()
-    resetNum = milestones.pop()
+    newMilestones = []
 
-    if (b - resetNum == 0):
-        num = len(milestones)
-        answers.append(num+1)
-        continue
+    for j in range(len(milestones)):
+        length = len(str(j+1))
 
-    num = b - resetNum
-    answers.append(num)
+        if milestones[j] > 45:
+            newMilestone = milestones[j]
 
-for k in answers:
-    print(k)
+            for k in range(1, length):
+                offset = int('9'*k)
+                if j - offset >= 0:
+                    newMilestone += milestones[j-offset]
+
+            newMilestones.append(newMilestone)
+
+            if newMilestone >= b:
+                break
+        else:
+            newMilestones.append(milestones[j])
+
+    string = ''
+    for i in range(1, len(newMilestones) + 1):
+        string += str(i)
+
+    answers.append(string[b-newMilestones[-1]-1])
+
+for i in answers:
+    print(i)
