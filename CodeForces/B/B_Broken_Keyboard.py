@@ -36,12 +36,5 @@ for i in range(a):
 
     for i in ans:
         print(i, end="")
+    
     print()
-            
-
-        
-
-    
-    
-    
-
