@@ -1,8 +1,5 @@
 from functools import lru_cache
 from functools import cache
-import sys
-
-sys.setrecursionlimit(5000)
 
 MOD = 1000000007
 
@@ -47,4 +44,4 @@ class Solution:
         return answer % MOD
 
             
-print(Solution().knightDialer(1800))
+print(Solution().knightDialer(3131))

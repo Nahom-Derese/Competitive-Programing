@@ -15,7 +15,8 @@ for i in range(int(input())):
     i=0
     j=0
 
-    while i < len(integers[:-k]) and j < len(preference)-c:
+    u = len(integers[:-k])
+    while i < u and j < len(preference)-c:
         ans += integers[i]
         i+=preference[j]-1
         j+=1
