@@ -5,19 +5,19 @@ for i in range(t):
 
     nums = [int(i) for i in input().split()]
 
-    val = 0
-    possible = True
+    first = False
 
-    for i in range(n):
-        right = i+1
+    ans = True
+
+    for y in range(1,len(nums)):
+        if nums[y] > nums[y-1]:
+            first = True
         
-        if right < len(nums):
-            if nums[right] > nums[i]:
-                val=1
-            if val == 1 and nums[right] < nums[i]:
-                possible = False
+        if first and nums[y] < nums[y-1]:
+            ans = False
+            break
     
-    if possible:
+    if ans:
         print("YES")
     else:
         print("NO")
