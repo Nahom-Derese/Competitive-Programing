@@ -16,10 +16,8 @@ for i in range(1,n+2):
 @cache
 def summation(t,l,r):
     if t==2:
-        # print(prefixSumB[r], prefixSumB[l])
         return prefixSumB[r] - prefixSumB[l-1]
     else:
-        # print(prefixSumA[r], prefixSumA[l])
         return prefixSumA[r] - prefixSumA[l-1]
 
 
