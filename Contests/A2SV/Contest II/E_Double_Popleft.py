@@ -1,31 +1,35 @@
+from sys import stdin
+
+input = stdin.readline
+
 from collections import deque
 
 n, q = map(int, input().split())
 
 nums = deque([int(i) for i in input().split()])
-generated = []
+max_index = nums.index(max(nums))
 
 def doublePopLeft(c):
+    u = nums.copy()
     for j in range(c):
-        if nums[0] > nums[1]:
-            y = nums.popleft()
-            x = nums.popleft()
-            nums.append(x)
-            nums.appendleft(y)
+        if u[0] > u[1]:
+            y = u.popleft()
+            x = u.popleft()
+            u.append(x)
+            u.appendleft(y)
         else:
-            x = nums.popleft()
-            nums.append(x)
+            x = u.popleft()
+            u.append(x)
         
-
+    return list(u)
 
 for i in range(q):
     query = int(input())
-    max_index = nums.index(max(nums)) + 1
-    doublePopLeft(min(query-1, max_index))
-    if query > n:
-        formula = (query - max_index) % n 
-        print(nums[0], nums[formula])
+    shift = min(query-1, max_index)
+    y = doublePopLeft(shift)
+
+    if query >= n:
+        formula = (query - (max_index+1)) % (n-1) 
+        print(y[0], y[1:][formula])
     else:
-        print(nums[0], nums[1])
-    
-    
+        print(y[0], y[1])
