@@ -16,24 +16,18 @@ class Solution:
                 postorder(node.right)
                 postorder(node.left)
             else:
-                if a and a[-1] == '-':
-                    a.pop()
-                else:
-                    a.append('-')
+                a.append('-')
         
-        def inorder(node):
+        def preorder(node):
             nonlocal b
             if node:
                 b.append(node.val)
-                inorder(node.left)
-                inorder(node.right)
+                preorder(node.left)
+                preorder(node.right)
             else:
-                if b and b[-1] == '-':
-                    b.pop()
-                else:
-                    b.append('-')
+                b.append('-')
             
         postorder(root.left)
-        inorder(root.right)
+        preorder(root.right)
      
         return b == a
