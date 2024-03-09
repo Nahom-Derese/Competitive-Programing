@@ -15,7 +15,7 @@ def backtrack(summ, freq, idx):
 
 
 for i in range(int(input())):
-    n = int(input())
+    n = input()
 
     nums = [int(i[-1]) for i in input().split()]
 
@@ -24,4 +24,7 @@ for i in range(int(input())):
     for i in count:
         count[i] = min(3, count[i])
 
-    print("YES") if backtrack(0, count, 0) else print("NO")
+    if backtrack(0, count, 0): 
+        print("YES") 
+    else:
+        print("NO")
