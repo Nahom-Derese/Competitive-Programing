@@ -13,4 +13,6 @@ ans = float("inf")
 
 for i in range(len(m)-1):
     if m[i] - ceil(k / (i+1)) > m[i+1]:
-        ans = min(ans, (m[i] - k, str(x[m[i]]) * i))
+        ans = min(ans, m[i] - k)
+
+print(ans)
