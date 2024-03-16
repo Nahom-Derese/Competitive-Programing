@@ -1,23 +1,15 @@
-from bisect import *
-
 n, q = map(int, input().split())
 nums = list(map(int, input().split()))
+pre_sum = [0,0]
 
-anomalies = []
-
-def validate(array):
-    global anomalies
-    for i in range(2, len(array)):
-        if array[i-2] >= array[i-1] and array[i-1] >= array[i]:
-            anomalies.append(i)
-            # return False
-    return True
-
+for i in range(2,n):
+    pre_sum.append(pre_sum[-1] + int(nums[i-2] >= nums[i-1] and nums[i-1] >= nums[i]))
+    
 for _ in range(q):
     l, r = map(int, input().split())
-    my_range = r - l + 1
-    start = bisect_right(anomalies, l)
-    end = bisect_right(anomalies, r)
-
-    anomalies_in_range = end - start
-    print(l, r , start, end)
+    
+    if r == l:
+        print(1)
+        
+    else:
+        print((r - l + 1) - (pre_sum[r-1] - pre_sum[l]))

@@ -21,5 +21,4 @@ def backtrack(idx, current):
 
 backtrack(0, '')
 foursevens.sort()
-
 print(foursevens[bisect_left(foursevens, n)])
