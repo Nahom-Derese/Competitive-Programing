@@ -9,6 +9,8 @@ def checker(m):
     global a
     available = 0
     for i in range(n):
+        if available < 0:
+            return False
         if a[i] - m >= 0:
             available += a[i] - m
         else:
