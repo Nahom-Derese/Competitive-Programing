@@ -20,7 +20,7 @@ def escapable(row, col):
             EscapingGoodGuys.add((row, col))
         if grid[row][col] == "B":
             EscapingBadGuys.add((row, col))
-        return grid[row][col] != "#" 
+        return grid[row][col] != "#"
 
 def dfs_neighbour(row, col):
     res = []
@@ -39,13 +39,13 @@ def dfs(row, col):
     grid[row][col] = ">"
 
     while queue:
-        row, col = queue.popleft()
+        new_row, new_col = queue.popleft()
 
-        for neighbour in dfs_neighbour(row, col):
-            next_row , next_col = neighbour 
+        for neighbour in dfs_neighbour(new_row, new_col):
+            next_row, next_col = neighbour
             if grid[next_row][next_col] != ">":
                 queue.append(neighbour)
-                grid[next_row][next_col] = ">"
+            grid[next_row][next_col] = ">"
         
 def neighbours(row, col):
     res = []
@@ -107,3 +107,4 @@ for i in range(int(input())):
     GoodGuys.clear()
     EscapingBadGuys.clear()
     EscapingGoodGuys.clear()
+
