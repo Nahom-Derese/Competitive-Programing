@@ -79,3 +79,27 @@ def solve_problem():
 
 if __name__ == '__main__':
     solve_problem()
+
+
+
+
+
+
+
+
+
+def topological_sort(graph):
+    indegree = [0] * len(graph)
+    for neighbors in graph.values():
+        for neighbor in neighbors:
+            indegree[neighbor] += 1
+    queue = deque([node for node in range(len(graph)) if indegree[node] == 0])
+    res = []
+    while queue:
+        node = queue.popleft()
+        res.append(node)
+        for neighbor in graph[node]:
+            indegree[neighbor] -= 1
+            if indegree[neighbor] == 0:
+                queue.append(neighbor)
+    return res

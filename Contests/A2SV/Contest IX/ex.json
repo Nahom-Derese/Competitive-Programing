@@ -1,0 +1,41 @@
+{
+  "id": 4559,
+  "timestamp": 1700333092.657923,
+  "tag": null,
+  "body": "Based on the information given in the table below, what is the enthalpy change for the reaction:\r\n\r\n   $2 H_2O_2(g) + S(s) \\longrightarrow  SO_2(g) + 2 H_2O(g)$ \r\n   \r\n\r\n   $\\begin{array}{|c|c|}\r\n         \\hline\r\n         \\text{Substance} & \\Delta H_f (kJ/mol) \\\\\r\n         \\hline\r\n\r\n         H_2O_2(g)        & -150                \\\\\r\n         \\hline\r\n         SO_2(g)          & -300                \\\\\r\n         \\hline\r\n         H_2O(g)          & - 250               \\\\\r\n         \\hline\r\n         S(s)             & 0                   \\\\\r\n         \\hline\r\n      \\end{array}$",
+  "subject": 4,
+  "chapter": 58,
+  "exam": 42,
+  "answer_des": "To determine the enthalpy change for the reaction, we need to calculate the sum of the enthalpies of the products and subtract the sum of the enthalpies of the reactants.\r\n\r\n      The enthalpy change for the reaction can be calculated as follows:\r\n\r\n      $\\Delta H = \\sum \\Delta H_f(\\text{products}) - \\sum \\Delta H_f(\\text{reactants})$\r\n\r\n      Given the enthalpy of formation values in the table, we can calculate the enthalpy change for the reaction:\r\n\r\n      $\\Delta H = - (300 \\, \\text{kJ/mol} + 2 \\times 250 \\, \\text{kJ/mol}) - (2 \\times 150 \\, \\text{kJ/mol} + 0 \\, \\text{kJ/mol})$\r\n\r\n      Simplifying the expression, we get:\r\n\r\n      $\\Delta H = - (800 \\, \\text{kJ/mol} - 300) \\, \\text{kJ/mol} = -500 \\, \\text{kJ/mol}$\r\n\r\n      Therefore, the correct answer is: - 500 kJ\r\n\r\n      The enthalpy change for the reaction is - 500 kJ.",
+  "choices": [
+    {
+      "id": 18247,
+      "choice_number": 0,
+      "body": "200 kJ",
+      "is_correct": false,
+      "image": null
+    },
+    {
+      "id": 18248,
+      "choice_number": 1,
+      "body": "-200 kJ",
+      "is_correct": false,
+      "image": null
+    },
+    {
+      "id": 18249,
+      "choice_number": 2,
+      "body": "-500 kJ",
+      "is_correct": true,
+      "image": null
+    },
+    {
+      "id": 18250,
+      "choice_number": 3,
+      "body": "400 kJ",
+      "is_correct": false,
+      "image": null
+    }
+  ],
+  "images": []
+}
