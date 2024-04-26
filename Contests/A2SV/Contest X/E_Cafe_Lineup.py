@@ -20,6 +20,7 @@ while l < x and r < y and my_plates < n:
         r+=1
     
     else:
+        my_plates+= plates_2[r] == 0
         l+=1
     minutes+=1
 
