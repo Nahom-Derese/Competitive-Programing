@@ -42,3 +42,23 @@ if my_plates == n:
     print(minutes)
 else:
     print("NO")
+
+
+directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+
+def inbound(row, col):
+    return (0 <= row < len(grid) and 0 <= col < len(grid[0]))
+
+def dfs(grid, visited, row, col):
+    stack = [(row, col)]
+    grid[row][col] = '>'
+    while stack:
+        row, col = stack.pop()
+        for row_change, col_change in directions:
+            new_row = row + row_change
+            new_col = col + col_change
+            if inbound(new_row, new_col) and not visited[new_row][new_col]:
+                grid[new_row][new_col] = '>'
+                stack.append((new_row, new_col))
+
+
