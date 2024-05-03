@@ -10,9 +10,7 @@ class UnionFind:
         self.size = [1] * size
     
     def findAns(self, x):
-        while x != self.root[x]:
-            self.root[x] = self.root[self.root[x]]
-            x = self.root[x]
+        x = self.find(x)
         return [i+1 for i in self.ans[x]]
     
     def find(self, x):
