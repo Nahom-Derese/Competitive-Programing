@@ -1,42 +1,50 @@
 from collections import defaultdict
 
 
+class UnionFind:
+    def __init__(self, n: int) -> None:
+        self.parent = {i:i for i in range(n+1)}
+        self.size = {i:1 for i in range(n+1)}
+
+    def find(self, x: int) -> int:
+        while x != self.parent[x]:
+            self.parent[x] = self.parent[self.parent[x]]
+            x = self.parent[x]
+        return x
+
+    def union(self, x: int, y: int):
+        px, py = self.find(x), self.find(y)
+
+        if px == py:
+            return
+
+        if self.size[px] > self.size[py]:
+            self.parent[py] = px
+            self.size[px] += self.size[py]
+        else:
+            self.parent[px] = py
+            self.size[py] += self.size[px]
+
+
+
 def solve():
     n, m = [int(i) for i in input().split()]
+    g = defaultdict(list)
     
-    deg = [0] * n
-    used = [False] * n
-    g = [[] for _ in range(n)]
-    
-    index = 2
+    edges = []
     for _ in range(m):
         x, y = [int(i)-1 for i in input().split()]
-        index += 2
+        edges.append((x,y))
         g[x].append(y)
         g[y].append(x)
-        deg[x] += 1
-        deg[y] += 1
-    
+
+    DSU = UnionFind(n)
     ans = 0
-    for i in range(n):
-        if not used[i]:
-            comp = []
-            
-            stack = [(i, used, comp, g)]
-    
-            while stack:
-                v, used, comp, g = stack.pop()
-                used[v] = True
-                comp.append(v)
-                
-                for to in g[v]:
-                    if not used[to]:
-                        stack.append((to, used, comp, g))
+    for x,y in edges:
+        if DSU.find(x) == DSU.find(y):
+            ans+=1
+        if len(g[x]) == 2 and len(g[y]) == 2:
+            DSU.union(x, y)
+    return ans
 
-            ok = all(deg[v] == 2 for v in comp)
-            if ok:
-                ans += 1
-    
-    print(ans)
-
-solve()
+print(solve())
