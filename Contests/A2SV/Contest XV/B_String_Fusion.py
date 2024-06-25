@@ -1,64 +1,50 @@
 class TrieNode:
     def __init__(self):
-        self.is_end = False
-        self.children = [ None for _ in range(26) ]
-
-    def empty(self):
-        return self.children.count(None) == 26
-
-
+     self.child= {}
+     self.cnt = 0
+    
 class Trie:
     def __init__(self):
         self.root = TrieNode()
-        self.lengths = []
 
-    def insert(self, word:str) -> None:
-        dummy = self.root
-        for char in word:
-            pos = ord(char) - ord('a')
-            if dummy.children[pos] == None:
-                dummy.children[pos] = TrieNode()
+    def insert(self, word: str) -> None:
+        cur = self.root
+        
+        for c in word:
+            ind=ord(c)-ord("a")
 
-            dummy = dummy.children[pos]
-
-        dummy.is_end = True
-        self.lengths.append(len(word))
-    
-    def calc(self, word:str) -> None:
-        dummy = self.root
-        for char in word:
+            if ind  not in cur.child:
+                cur.child[ind]=TrieNode()
             
-            pos = ord(char) - ord('a')
-            if dummy.children[pos] == None:
-                return 
+            cur=cur.child[ind]
+            cur.cnt += 1
+    
+    def search(self, word: str) -> int:
+     
+        itr=self.root
+        tot = 0
+        for c in word:
+            ind=ord(c)-ord("a")
+            if ind not in itr.child:
+                return tot
+            
+            itr=itr.child[ind]
+            tot += itr.cnt * 2
 
-            dummy = dummy.children[pos]
-
-        dummy.is_end = True
-        self.lengths.append(len(word))
-
-    def search(self, word:str) -> None:
-        dummy = self.root
-        for char in word:
-            pos = ord(char) - ord('a')
-            if dummy.children[pos] == None:
-                return False
-
-            dummy = dummy.children[pos]
-
-        return dummy.is_end
-
+        return tot
+     
 
 trie = Trie()
+strings = []
 
-def solve(val):
-    trie.insert(val[::-1])
-    return trie.calc(val)
-
-
-ans = 0
 for _ in range(int(input())):
     val = input()
-    ans+=solve(val)
+    strings.append(val)
+    trie.insert(val)
+
+
+ans = sum([len(string)*2*len(strings) for string in strings])
+for val in strings:
+    ans-=trie.search(val[::-1])
 
 print(ans)
