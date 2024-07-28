@@ -1,9 +1,9 @@
-from math import factorial
+from math import comb
 
 n, m, t = [int(i) for i in input().split()]
 
-fact1 = factorial(n)
-fact2 = factorial(m)
+# fact1 = factorial(n)
+# fact2 = factorial(m)
 
 possible_ways = []
 ans = 0
@@ -14,8 +14,10 @@ for b in range(4, n+5):
 
 
 def combination(a, b):
-    comb1 = fact1 / (factorial(n - a) * factorial(a))
-    comb2 = fact2 / (factorial(m - b) * factorial(b))
+    comb1 = comb(n, a)
+    comb2 = comb(m, b)
+    # comb1 = fact1 / (factorial(n - a) * factorial(a))
+    # comb2 = fact2 / (factorial(m - b) * factorial(b))
     
     return comb1 * comb2
 
