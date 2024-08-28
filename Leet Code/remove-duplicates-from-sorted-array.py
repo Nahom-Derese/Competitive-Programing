@@ -14,4 +14,3 @@ class Solution:
                 second_pt +=1
         
         return first_pt+1
-            
