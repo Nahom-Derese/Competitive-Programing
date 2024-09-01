@@ -9,29 +9,31 @@ def solve():
         
     
     for i in range(n):
-        for j in range(i+1, n):
+        for j in range(n):
+            if i==j:
+                continue
             ans[i] &= grid[i][j]
     
     new_grid = [[0]*n for i in range(n)]
 
     for i in range(n):
-        for j in range(i+1, n):
+        for j in range(n):
             new_grid[i][j] |= ans[i]
             new_grid[i][j] |= ans[j]
 
     for i in range(n):
-        for j in range(i+1, n):
-            print(grid[i][j], end=" ")
-            # if new_grid[i][j] != grid[i][j]:
-            #     return []
-        print()
-    print(ans)
+        for j in range(n):
+            if i==j:
+                continue
+            if new_grid[i][j] != grid[i][j]:
+                return []
+    
     return ans
 
 for _ in range(int(input())):
     x = solve()
-    # if not x:
-    #     print("NO")
-    # else:
-    #     print("YES")
-    #     print(*x)
+    if not x:
+        print("NO")
+    else:
+        print("YES")
+        print(*x)
